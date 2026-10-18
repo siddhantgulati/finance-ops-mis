@@ -1,0 +1,16 @@
+# Excel lock and temp files
+~$*
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Generated output
+output/
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini

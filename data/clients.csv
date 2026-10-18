@@ -1,0 +1,161 @@
+ClientID,ClientName,Industry,Region,PaymentTermsDays,CreditRating
+C1001,Malhotra Infra Projects Pvt Ltd,Energy & Infra,West,30,A
+C1002,Tandon Technologies Pvt Ltd,Technology,East,30,BBB
+C1003,Sinha Infra Projects Ltd,Energy & Infra,East,60,BBB
+C1004,Shetty Mart Pvt Ltd,Retail & FMCG,West,60,BBB
+C1005,Bhatia Digital Ltd,Technology,North,30,A
+C1006,Menon Infra Projects LLP,Energy & Infra,West,30,A
+C1007,Bhatia Insurance Brokers Ltd,BFSI,North,45,BB
+C1008,Bhatia Mart Ltd,Retail & FMCG,North,60,BBB
+C1009,Shah Renewables Pvt Ltd,Energy & Infra,North,60,BBB
+C1010,Nair Life Sciences LLP,Healthcare,East,30,BBB
+C1011,Thakur Securities Ltd,BFSI,North,45,AA
+C1012,Nanda Securities LLP,BFSI,West,30,BBB
+C1013,Mistry Engineering Works LLP,Manufacturing,West,30,A
+C1014,Agarwal Housing Finance LLP,BFSI,West,45,A
+C1015,Rao Hospitals LLP,Healthcare,North,45,BBB
+C1016,Kulkarni Logistics Ltd,Energy & Infra,West,30,A
+C1017,Trivedi Consumer Products Ltd,Retail & FMCG,North,30,B
+C1018,Mistry Diagnostics Ltd,Healthcare,West,30,BB
+C1019,Patel Consumer Products Ltd,Retail & FMCG,South,45,A
+C1020,Khanna Retail Ltd,Retail & FMCG,North,30,BB
+C1021,Puri Infra Projects Pvt Ltd,Energy & Infra,West,30,A
+C1022,Arora Insurance Brokers Pvt Ltd,BFSI,West,45,A
+C1023,Nair Securities Ltd,BFSI,East,30,AAA
+C1024,Pillai Foods Pvt Ltd,Retail & FMCG,West,45,A
+C1025,Menon Polymers Ltd,Manufacturing,North,45,BB
+C1026,Banerjee Life Sciences Pvt Ltd,Healthcare,West,30,A
+C1027,Patel Auto Components Pvt Ltd,Manufacturing,West,60,BBB
+C1028,Shetty Insurance Brokers Ltd,BFSI,West,30,BBB
+C1029,Sinha Technologies Pvt Ltd,Technology,North,30,BBB
+C1030,Dhillon Insurance Brokers LLP,BFSI,North,45,AA
+C1031,Sinha Constructions Ltd,Energy & Infra,North,30,A
+C1032,Sethi Infra Projects Pvt Ltd,Energy & Infra,West,60,B
+C1033,Iyer Foods LLP,Retail & FMCG,East,45,A
+C1034,Mistry Digital Ltd,Technology,North,45,BBB
+C1035,Desai Hospitals Ltd,Healthcare,North,45,BBB
+C1036,Reddy Digital LLP,Technology,North,30,AAA
+C1037,Chopra Capital Ltd,BFSI,North,30,B
+C1038,Garg Systems Ltd,Technology,East,30,A
+C1039,Rao Auto Components Ltd,Manufacturing,West,30,BBB
+C1040,Shah Foods LLP,Retail & FMCG,North,45,A
+C1041,Nair Power LLP,Energy & Infra,North,45,BBB
+C1042,Tandon Retail Pvt Ltd,Retail & FMCG,East,30,BBB
+C1043,Garg Systems LLP,Technology,North,30,A
+C1044,Nair Housing Finance Ltd,BFSI,East,30,AA
+C1045,Mukherjee Power Pvt Ltd,Energy & Infra,South,30,BBB
+C1046,Desai Finserv Pvt Ltd,BFSI,South,60,BBB
+C1047,Puri Hospitals Pvt Ltd,Healthcare,South,30,A
+C1048,Sinha Consumer Products Ltd,Retail & FMCG,North,45,AA
+C1049,Iyer Polymers LLP,Manufacturing,West,30,A
+C1050,Trivedi Securities Pvt Ltd,BFSI,North,30,BBB
+C1051,Patel Logistics Pvt Ltd,Energy & Infra,North,45,A
+C1052,Patel Housing Finance Pvt Ltd,BFSI,North,30,A
+C1053,Saxena Power Ltd,Energy & Infra,North,45,BBB
+C1054,Oberoi Mart LLP,Retail & FMCG,North,30,A
+C1055,Oberoi Capital Ltd,BFSI,West,30,A
+C1056,Bhatia Polymers LLP,Manufacturing,West,45,A
+C1057,Agarwal Renewables Ltd,Energy & Infra,West,60,A
+C1058,Nair Auto Components Ltd,Manufacturing,North,30,A
+C1059,Mukherjee Life Sciences LLP,Healthcare,West,30,B
+C1060,Puri Housing Finance Pvt Ltd,BFSI,North,30,AA
+C1061,Shah Infotech Ltd,Technology,East,30,BBB
+C1062,Kapoor Software Pvt Ltd,Technology,West,30,A
+C1063,Garg Power Ltd,Energy & Infra,East,30,BBB
+C1064,Garg Retail Ltd,Retail & FMCG,West,45,A
+C1065,Tandon Industries Ltd,Manufacturing,East,45,BBB
+C1066,Grover Engineering Works LLP,Manufacturing,West,45,A
+C1067,Shetty Beverages Ltd,Retail & FMCG,West,30,B
+C1068,Saxena Infra Projects LLP,Energy & Infra,North,60,AA
+C1069,Grover Systems Pvt Ltd,Technology,West,45,AA
+C1070,Arora Polymers Pvt Ltd,Manufacturing,North,30,BBB
+C1071,Patel Insurance Brokers Pvt Ltd,BFSI,North,45,A
+C1072,Saxena Engineering Works Ltd,Manufacturing,South,60,A
+C1073,Kulkarni Mart Pvt Ltd,Retail & FMCG,West,30,A
+C1074,Trivedi Foods LLP,Retail & FMCG,South,30,A
+C1075,Garg Auto Components Pvt Ltd,Manufacturing,West,45,A
+C1076,Mistry Renewables Ltd,Energy & Infra,North,45,AA
+C1077,Malhotra Capital Ltd,BFSI,West,30,A
+C1078,Iyer Infra Projects Pvt Ltd,Energy & Infra,North,60,A
+C1079,Kulkarni Renewables Ltd,Energy & Infra,South,30,AA
+C1080,Verma Polymers LLP,Manufacturing,North,30,BBB
+C1081,Ghosh Housing Finance Ltd,BFSI,West,45,A
+C1082,Kulkarni Pharma Pvt Ltd,Healthcare,North,30,BBB
+C1083,Saxena Foods Ltd,Retail & FMCG,North,60,BBB
+C1084,Verma Consumer Products Pvt Ltd,Retail & FMCG,South,30,BBB
+C1085,Ghosh Constructions LLP,Energy & Infra,East,60,A
+C1086,Trivedi Securities Ltd,BFSI,North,45,BBB
+C1087,Mistry Mart LLP,Retail & FMCG,West,30,B
+C1088,Khanna Systems Pvt Ltd,Technology,North,45,BBB
+C1089,Dhillon Polymers LLP,Manufacturing,North,45,AA
+C1090,Puri Software LLP,Technology,North,45,A
+C1091,Sinha Software Pvt Ltd,Technology,South,45,BBB
+C1092,Pillai Securities Ltd,BFSI,South,30,A
+C1093,Grover Consumer Products Ltd,Retail & FMCG,North,30,A
+C1094,Ghosh Power LLP,Energy & Infra,East,30,BBB
+C1095,Banerjee Foods Ltd,Retail & FMCG,North,45,A
+C1096,Chopra Digital Pvt Ltd,Technology,West,30,B
+C1097,Reddy Auto Components Ltd,Manufacturing,West,30,BBB
+C1098,Rao Logistics Pvt Ltd,Energy & Infra,West,30,BBB
+C1099,Chawla Housing Finance Ltd,BFSI,North,60,BB
+C1100,Nair Diagnostics Pvt Ltd,Healthcare,North,30,AA
+C1101,Nair Software Ltd,Technology,North,45,BBB
+C1102,Nanda Auto Components Pvt Ltd,Manufacturing,North,45,AA
+C1103,Mukherjee Healthcare Ltd,Healthcare,East,45,AA
+C1104,Bhatia Power Ltd,Energy & Infra,South,45,BBB
+C1105,Chopra Industries Ltd,Manufacturing,North,30,AAA
+C1106,Ghosh Systems Ltd,Technology,North,30,A
+C1107,Rao Healthcare Pvt Ltd,Healthcare,East,60,BBB
+C1108,Sinha Polymers Pvt Ltd,Manufacturing,North,60,BBB
+C1109,Bhatia Industries Ltd,Manufacturing,South,30,A
+C1110,Sinha Steels Ltd,Manufacturing,South,30,AA
+C1111,Reddy Insurance Brokers Pvt Ltd,BFSI,North,30,BBB
+C1112,Bansal Housing Finance Pvt Ltd,BFSI,West,45,A
+C1113,Sood Beverages Ltd,Retail & FMCG,North,45,AA
+C1114,Sood Auto Components LLP,Manufacturing,South,45,BBB
+C1115,Dhillon Polymers Ltd,Manufacturing,West,60,A
+C1116,Kulkarni Steels Ltd,Manufacturing,North,30,BBB
+C1117,Thakur Mart Pvt Ltd,Retail & FMCG,West,30,BBB
+C1118,Sinha Housing Finance Pvt Ltd,BFSI,South,30,AA
+C1119,Ghosh Pharma Ltd,Healthcare,South,30,BBB
+C1120,Ghosh Finserv Ltd,BFSI,West,30,A
+C1121,Joshi Constructions Pvt Ltd,Energy & Infra,East,30,A
+C1122,Joshi Mart Ltd,Retail & FMCG,North,45,A
+C1123,Menon Software Pvt Ltd,Technology,South,60,A
+C1124,Shah Polymers LLP,Manufacturing,North,30,AA
+C1125,Khanna Securities Ltd,BFSI,North,60,A
+C1126,Sethi Power Pvt Ltd,Energy & Infra,North,30,B
+C1127,Garg Steels LLP,Manufacturing,South,30,BB
+C1128,Joshi Retail Ltd,Retail & FMCG,North,45,BBB
+C1129,Grover Diagnostics LLP,Healthcare,West,45,BB
+C1130,Garg Digital Pvt Ltd,Technology,East,60,A
+C1131,Pillai Polymers LLP,Manufacturing,East,30,A
+C1132,Shetty Constructions Pvt Ltd,Energy & Infra,South,30,BB
+C1133,Sinha Hospitals Pvt Ltd,Healthcare,North,45,BBB
+C1134,Shah Pharma Pvt Ltd,Healthcare,West,45,A
+C1135,Sood Hospitals Pvt Ltd,Healthcare,North,45,A
+C1136,Khanna Life Sciences Pvt Ltd,Healthcare,North,45,A
+C1137,Agarwal Beverages Pvt Ltd,Retail & FMCG,North,30,BBB
+C1138,Grover Constructions Pvt Ltd,Energy & Infra,South,45,AA
+C1139,Tandon Software Ltd,Technology,West,60,BBB
+C1140,Rao Software LLP,Technology,South,30,BBB
+C1141,Desai Consumer Products Pvt Ltd,Retail & FMCG,West,45,A
+C1142,Nanda Constructions Pvt Ltd,Energy & Infra,East,45,BB
+C1143,Kulkarni Life Sciences Pvt Ltd,Healthcare,North,45,BBB
+C1144,Shetty Retail Ltd,Retail & FMCG,South,45,BBB
+C1145,Kulkarni Retail Ltd,Retail & FMCG,West,30,BB
+C1146,Bansal Steels Ltd,Manufacturing,South,30,B
+C1147,Iyer Auto Components Pvt Ltd,Manufacturing,West,60,A
+C1148,Dhillon Capital Ltd,BFSI,North,45,A
+C1149,Sinha Auto Components Ltd,Manufacturing,North,45,A
+C1150,Khanna Logistics LLP,Energy & Infra,West,60,BB
+C1151,Mehra Digital LLP,Technology,North,45,A
+C1152,Mehra Logistics Pvt Ltd,Energy & Infra,North,60,BBB
+C1153,Tandon Logistics Ltd,Energy & Infra,West,30,B
+C1154,Desai Logistics Ltd,Energy & Infra,North,45,AA
+C1155,Sinha Beverages Pvt Ltd,Retail & FMCG,West,45,BBB
+C1156,Verma Diagnostics Pvt Ltd,Healthcare,South,60,BB
+C1157,Shah Foods Pvt Ltd,Retail & FMCG,West,60,AA
+C1158,Dhillon Mart Pvt Ltd,Retail & FMCG,East,45,AA
+C1159,Arora Logistics LLP,Energy & Infra,North,60,AA
+C1160,Thakur Consumer Products Ltd,Retail & FMCG,North,30,AA
