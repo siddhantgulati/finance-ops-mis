@@ -1,6 +1,6 @@
 # Finance Operations MIS: Billing, Collections and Receivables
 
-An Excel-based MIS that tracks billing, collections, receivables ageing and DSO for a professional services firm across FY 2025-26, plus a short leadership deck built from it.
+An Excel-based MIS that tracks billing, collections, receivables ageing and DSO for a professional services firm across FY 2025-26, plus a Power BI version and a short leadership deck built from it.
 
 I built this to practise the kind of recurring finance reporting that most operations teams still run in Excel: pull the month's billing and receipts, reconcile them, age what is still open, and turn it into something a leadership team can read in five minutes.
 
@@ -39,6 +39,21 @@ How the data flows:
 ![Top 10 clients](docs/clients.png)
 
 The leadership deck (`deck/Receivables_Review_FY26.pptx`, PDF copy alongside) covers these findings in five slides and ends with a Q1 action plan.
+
+## Power BI version
+
+`powerbi/Finance_Ops_MIS.pbip` is the same model rebuilt in Power BI for leadership, with slicers for region, industry and service line. It's saved as a Power BI project, so every visual and measure is a text file that can be reviewed line by line.
+
+- **Power Query** removes the duplicate and unmatched payments, totals what each invoice has received, and works out outstanding, days past due and the ageing bucket.
+- **Star schema:** Clients, ServiceLines and a fiscal-year Date table each filter both Invoices and Payments. The two fact tables aren't linked directly, so there are no ambiguous filter paths.
+- **DAX measures** for billed, collected, closing AR as a running balance, DSO on the trailing three months, 90+ overdue and the top 10 share.
+- **Three pages:** Overview, Client detail (a client-by-bucket matrix with heat shading) and Data quality (the excluded payments).
+
+All headline numbers match the Excel workbook.
+
+![Power BI overview](docs/powerbi_overview.png)
+
+To open it, double-click `Finance_Ops_MIS.pbip` in Power BI Desktop. Then go to **Home > Transform data > Edit parameters**, set **DataFolder** to the full path of this repo's `data` folder (ending in `\`), and click **Refresh**.
 
 ## Reconciliation checks
 
@@ -83,9 +98,10 @@ finance-ops-mis/
 ├── scripts/generate_data.py    builds the sample data
 ├── vba/modRefresh.bas          refresh and PDF export macros
 ├── deck/                       leadership deck (PPTX and PDF)
+├── powerbi/                    Power BI project (.pbip) and theme
 └── docs/                       screenshots used in this README
 ```
 
 ## Tools
 
-MS Excel (Power Query, structured tables, SUMIFS/COUNTIFS, INDEX/MATCH, conditional formatting, charts), VBA, PowerPoint, Python (pandas, NumPy).
+MS Excel (Power Query, structured tables, SUMIFS/COUNTIFS, INDEX/MATCH, conditional formatting, charts), VBA, Power BI (Power Query, DAX, data modelling), PowerPoint, Python (pandas, NumPy).
