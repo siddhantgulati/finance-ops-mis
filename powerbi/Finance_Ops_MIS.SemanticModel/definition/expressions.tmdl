@@ -1,0 +1,43 @@
+expression DataFolder = "C:\Projects\finance-ops-mis\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 95a7f666-0144-4b02-9df7-02f76bdd5175
+
+	annotation PBI_ResultType = Text
+
+expression Invoices_Raw =
+		let
+		    Source = Csv.Document(File.Contents(DataFolder & "invoices.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"InvoiceID", type text}, {"InvoiceDate", type date}, {"DueDate", type date}, {"ClientID", type text}, {"ServiceLine", type text}, {"NetAmount", type number}, {"GST", type number}, {"GrossAmount", type number}})
+		in
+		    #"Changed Type"
+	lineageTag: 0a67aca3-6cda-47ff-9d5f-400fe08dcc36
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Payments_Raw =
+		let
+		    Source = Csv.Document(File.Contents(DataFolder & "payments.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"PaymentID", type text}, {"InvoiceID", type text}, {"PaymentDate", type date}, {"AmountReceived", type number}, {"Mode", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: beac4553-1d2e-4fa6-9bdf-1f2466b63f03
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression PaymentTotals =
+		let
+		    Source = Payments,
+		    #"Grouped Rows" = Table.Group(Source, {"InvoiceID"}, {{"Received", each List.Sum([AmountReceived]), type nullable number}})
+		in
+		    #"Grouped Rows"
+	lineageTag: 7bc35ebb-2199-4e24-bf41-2abf9e9f7da3
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

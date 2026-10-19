@@ -1,0 +1,67 @@
+table Excl_NoInvoice
+	lineageTag: 9fd96b83-9e3a-403f-a2a9-d6da0937b783
+
+	column PaymentID
+		dataType: string
+		lineageTag: 020bd4cf-6eb4-455f-a1a5-aa8ee1e05236
+		summarizeBy: none
+		sourceColumn: PaymentID
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceID
+		dataType: string
+		lineageTag: e2f7c591-8142-4165-a9a3-1b2c29dff5b9
+		summarizeBy: none
+		sourceColumn: InvoiceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 422dd90a-6f79-4f6d-8d1d-4a2e9d207a36
+		summarizeBy: none
+		sourceColumn: PaymentDate
+
+		variation Variation
+			isDefault
+			relationship: e664c478-47c5-404e-8f38-c4c5f2ff93c7
+			defaultHierarchy: LocalDateTable_a095d9fa-4cc3-4a1c-8f56-17ac7f1059a1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AmountReceived
+		dataType: double
+		lineageTag: 4ae0b389-dc5f-4b36-862a-f563cacafbfa
+		summarizeBy: sum
+		sourceColumn: AmountReceived
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Mode
+		dataType: string
+		lineageTag: fb5458d5-84c0-409c-b8a5-37caba86761d
+		summarizeBy: none
+		sourceColumn: Mode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Excl_NoInvoice = m
+		mode: import
+		source =
+				let
+				    Source = Payments_Raw,
+				    #"Merged Queries" = Table.NestedJoin(Source, {"InvoiceID"}, Invoices_Raw, {"InvoiceID"}, "Invoices_Raw", JoinKind.LeftAnti),
+				    #"Removed Columns" = Table.RemoveColumns(#"Merged Queries",{"Invoices_Raw"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "6ae3918d131017964c29",
+  "position": {
+    "x": 0,
+    "y": 130,
+    "z": 2,
+    "height": 300,
+    "width": 940,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Excl_NoInvoice"
+                    }
+                  },
+                  "Property": "PaymentID"
+                }
+              },
+              "queryRef": "Excl_NoInvoice.PaymentID",
+              "nativeQueryRef": "PaymentID",
+              "displayName": "Payment ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Excl_NoInvoice"
+                    }
+                  },
+                  "Property": "InvoiceID"
+                }
+              },
+              "queryRef": "Excl_NoInvoice.InvoiceID",
+              "nativeQueryRef": "InvoiceID",
+              "displayName": "Invoice ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Excl_NoInvoice"
+                    }
+                  },
+                  "Property": "PaymentDate"
+                }
+              },
+              "queryRef": "Excl_NoInvoice.PaymentDate",
+              "nativeQueryRef": "PaymentDate",
+              "displayName": "Payment date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Excl_NoInvoice"
+                    }
+                  },
+                  "Property": "AmountReceived"
+                }
+              },
+              "queryRef": "Excl_NoInvoice.AmountReceived",
+              "nativeQueryRef": "AmountReceived",
+              "displayName": "Amount received"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Excl_NoInvoice"
+                    }
+                  },
+                  "Property": "Mode"
+                }
+              },
+              "queryRef": "Excl_NoInvoice.Mode",
+              "nativeQueryRef": "Mode"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Payment with no matching invoice'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

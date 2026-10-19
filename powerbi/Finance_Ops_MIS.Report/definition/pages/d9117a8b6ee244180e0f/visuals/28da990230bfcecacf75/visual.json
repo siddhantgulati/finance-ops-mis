@@ -1,0 +1,119 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "28da990230bfcecacf75",
+  "position": {
+    "x": 980,
+    "y": 130,
+    "z": 3,
+    "height": 300,
+    "width": 940,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Excl_Duplicates"
+                    }
+                  },
+                  "Property": "InvoiceID"
+                }
+              },
+              "queryRef": "Excl_Duplicates.InvoiceID",
+              "nativeQueryRef": "InvoiceID",
+              "displayName": "Invoice ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Excl_Duplicates"
+                    }
+                  },
+                  "Property": "PaymentDate"
+                }
+              },
+              "queryRef": "Excl_Duplicates.PaymentDate",
+              "nativeQueryRef": "PaymentDate",
+              "displayName": "Payment date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Excl_Duplicates"
+                    }
+                  },
+                  "Property": "AmountReceived"
+                }
+              },
+              "queryRef": "Excl_Duplicates.AmountReceived",
+              "nativeQueryRef": "AmountReceived",
+              "displayName": "Amount received"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Excl_Duplicates"
+                    }
+                  },
+                  "Property": "Times"
+                }
+              },
+              "queryRef": "Excl_Duplicates.Times",
+              "nativeQueryRef": "Times",
+              "displayName": "Times posted"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Duplicate payments (same invoice, date and amount)'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

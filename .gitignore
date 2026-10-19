@@ -14,3 +14,7 @@ output/
 Thumbs.db
 .DS_Store
 desktop.ini
+
+# Power BI local settings and data cache
+**/.pbi/localSettings.json
+**/.pbi/cache.abf

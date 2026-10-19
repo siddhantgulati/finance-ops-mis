@@ -1,0 +1,30 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Clients","Invoices_Raw","Payments_Raw","Payments","Invoices","PaymentTotals","ServiceLines","Excl_NoInvoice","Excl_Duplicates","_Measures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Clients
+ref table Payments
+ref table DateTableTemplate_c1a660f1-6baf-4564-9dab-24962647c663
+ref table Invoices
+ref table LocalDateTable_cb1880f1-8cda-4fee-b0c4-a1da462b619e
+ref table ServiceLines
+ref table Excl_NoInvoice
+ref table LocalDateTable_a095d9fa-4cc3-4a1c-8f56-17ac7f1059a1
+ref table Excl_Duplicates
+ref table LocalDateTable_7c3fc533-fd6f-4c55-9120-7f5ad8be1687
+ref table Date
+ref table _Measures
+
+ref cultureInfo en-US
+

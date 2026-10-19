@@ -1,0 +1,126 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 288.33707724220505,
+            "y": 0
+          },
+          "nodeIndex": "Clients",
+          "nodeLineageTag": "17eb9a4d-1723-4a3f-b0b5-52d6cdab5240",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.39806675127556,
+            "y": 525.58116713130335
+          },
+          "nodeIndex": "Excl_Duplicates",
+          "nodeLineageTag": "a82ef6a3-9b8e-41b9-b5cf-fd4a20598634",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852.39806675127568,
+            "y": 275.79058356565167
+          },
+          "nodeIndex": "Excl_NoInvoice",
+          "nodeLineageTag": "9fd96b83-9e3a-403f-a2a9-d6da0937b783",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.19938705953632,
+            "y": 327.77316049809707
+          },
+          "nodeIndex": "Invoices",
+          "nodeLineageTag": "998aa38a-9188-4539-ae54-3182f4f9bafe",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50.034092418960313,
+            "y": 192.39000599780036
+          },
+          "nodeIndex": "Payments",
+          "nodeLineageTag": "b2eb852a-a773-4418-ba3f-d7317ad5e644",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 541.60164268758115
+          },
+          "nodeIndex": "ServiceLines",
+          "nodeLineageTag": "3d3f51c2-4513-43e5-b3f5-e058f55c3447",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 588.66620495736288,
+            "y": 106.71976067057656
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "97f30f6a-2d53-4f6d-ac2f-f6f31f9192a6",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1086.3980667512756,
+            "y": 298.79058356565167
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "bb2913eb-d4ea-4f68-8969-205b80602c36",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 63.287087723234137,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

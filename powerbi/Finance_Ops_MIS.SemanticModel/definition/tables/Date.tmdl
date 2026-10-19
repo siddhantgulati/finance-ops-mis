@@ -1,0 +1,63 @@
+table Date
+	lineageTag: 97f30f6a-2d53-4f6d-ac2f-f6f31f9192a6
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: 8becf3e5-f8f4-4d69-91db-442c1363edc5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthStart
+		formatString: General Date
+		lineageTag: 664d234c-0b6b-4041-af85-0287cb0106eb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthStart]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: d930c27e-52e5-4222-9c2a-8fdd08de8d3b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: MonthStart
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Month No'
+		formatString: 0
+		lineageTag: 1768e141-1956-4550-8846-3c15b4a7f5f3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [FY Month No]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Quarter'
+		lineageTag: 2d39eb43-7f4a-4034-b6a9-8c6d6d58d143
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FY Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS (
+				    CALENDAR ( DATE ( 2025, 4, 1 ), DATE ( 2026, 3, 31 ) ),
+				    "MonthStart", DATE ( YEAR ( [Date] ), MONTH ( [Date] ), 1 ),
+				    "Month", FORMAT ( [Date], "mmm-yy" ),
+				    "FY Month No", MOD ( MONTH ( [Date] ) - 4, 12 ) + 1,
+				    "FY Quarter", "Q" & INT ( MOD ( MONTH ( [Date] ) - 4, 12 ) / 3 ) + 1
+				)
+
+	annotation PBI_Id = 1691c13accb14afda31f094aa17ddd0a
+

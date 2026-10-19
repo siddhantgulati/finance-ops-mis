@@ -1,0 +1,25 @@
+table ServiceLines
+	lineageTag: 3d3f51c2-4513-43e5-b3f5-e058f55c3447
+
+	column ServiceLine
+		dataType: string
+		lineageTag: 4d7dd5e3-de1b-406e-b64d-742e4e6052b6
+		summarizeBy: none
+		sourceColumn: ServiceLine
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ServiceLines = m
+		mode: import
+		source =
+				let
+				    Source = Invoices_Raw,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"ServiceLine"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

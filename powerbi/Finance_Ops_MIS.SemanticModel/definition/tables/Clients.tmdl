@@ -1,0 +1,66 @@
+table Clients
+	lineageTag: 17eb9a4d-1723-4a3f-b0b5-52d6cdab5240
+
+	column ClientID
+		dataType: string
+		lineageTag: 95447c0c-a0ef-44cf-bda4-7f760fb051d0
+		summarizeBy: none
+		sourceColumn: ClientID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientName
+		dataType: string
+		lineageTag: cdc0e1ca-7b47-45ad-91b7-b355f368ce88
+		summarizeBy: none
+		sourceColumn: ClientName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Industry
+		dataType: string
+		lineageTag: dd884302-0aa7-42dc-84f7-11553de5b67d
+		summarizeBy: none
+		sourceColumn: Industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 88490fc6-a5c6-45ac-a3e4-67afc1318ba8
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentTermsDays
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f318890-4136-4657-89fd-1de1a7ed3c50
+		summarizeBy: sum
+		sourceColumn: PaymentTermsDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditRating
+		dataType: string
+		lineageTag: 7751bc8f-5af3-4233-8142-fe00af33b79f
+		summarizeBy: none
+		sourceColumn: CreditRating
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Clients = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "clients.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ClientID", type text}, {"ClientName", type text}, {"Industry", type text}, {"Region", type text}, {"PaymentTermsDays", Int64.Type}, {"CreditRating", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

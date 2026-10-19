@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Finance_Ops_MIS"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9461fdbe-26a5-43de-b63e-3dea82fabd0c"
+  }
+}

@@ -1,0 +1,39 @@
+relationship abba6312-9373-4a6b-b5ed-2b33b21cfb30
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Invoices.DueDate
+	toColumn: LocalDateTable_cb1880f1-8cda-4fee-b0c4-a1da462b619e.Date
+
+relationship e664c478-47c5-404e-8f38-c4c5f2ff93c7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Excl_NoInvoice.PaymentDate
+	toColumn: LocalDateTable_a095d9fa-4cc3-4a1c-8f56-17ac7f1059a1.Date
+
+relationship 26f2b61c-0966-4e2d-966a-06999d087534
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Excl_Duplicates.PaymentDate
+	toColumn: LocalDateTable_7c3fc533-fd6f-4c55-9120-7f5ad8be1687.Date
+
+relationship AutoDetected_084aa571-4698-449e-ac74-c7594d3e6e45
+	fromColumn: Payments.ClientID
+	toColumn: Clients.ClientID
+
+relationship AutoDetected_b5afb455-3f49-42dd-89fe-76da2b05a1bc
+	fromColumn: Invoices.ClientID
+	toColumn: Clients.ClientID
+
+relationship AutoDetected_7279c93d-6db5-45ba-aa54-4d0757e09850
+	fromColumn: Payments.ServiceLine
+	toColumn: ServiceLines.ServiceLine
+
+relationship AutoDetected_242479e4-0728-46df-bb40-06e470cbe44e
+	fromColumn: Invoices.ServiceLine
+	toColumn: ServiceLines.ServiceLine
+
+relationship 222dc044-fed9-10a4-2e4d-3c68f05ddfcf
+	fromColumn: Invoices.InvoiceDate
+	toColumn: Date.Date
+
+relationship 8715a8c2-fd97-f583-fd0d-1068eff0045c
+	fromColumn: Payments.PaymentDate
+	toColumn: Date.Date
+

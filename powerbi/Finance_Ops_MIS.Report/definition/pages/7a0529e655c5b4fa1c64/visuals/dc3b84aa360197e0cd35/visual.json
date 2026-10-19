@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "dc3b84aa360197e0cd35",
+  "position": {
+    "x": 1164,
+    "y": 834,
+    "z": 13,
+    "height": 246,
+    "width": 756,
+    "tabOrder": 13
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Ten clients hold 77% of the ₹33 Cr that is more than 90 days overdue, but only 33% of billing. Use the slicers to see how this changes by region, industry and service line.",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

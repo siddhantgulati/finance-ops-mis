@@ -1,0 +1,97 @@
+table _Measures
+	lineageTag: bb2913eb-d4ea-4f68-8969-205b80602c36
+
+	measure 'Billed (Cr)' = DIVIDE ( SUM ( Invoices[GrossAmount] ), 1e7 )
+		formatString: 0.0
+		lineageTag: 0317fc24-16fd-4e2a-9b1e-a21fcaabaee1
+
+	measure 'Collected (Cr)' = DIVIDE ( SUM ( Payments[AmountReceived] ), 1e7 )
+		formatString: 0.0
+		lineageTag: ee36668c-08ca-4a2f-a6b0-37db8897c156
+
+	measure 'Outstanding AR (Cr)' = DIVIDE ( SUM ( Invoices[Outstanding] ), 1e7 )
+		formatString: 0.0
+		lineageTag: 8be0a0e8-31f2-4c64-9404-8320259a08be
+
+	measure '90+ Overdue (Cr)' =
+			
+			DIVIDE (
+			    CALCULATE ( SUM ( Invoices[Outstanding] ), Invoices[AgeBucket] = "90+" ),
+			    1e7
+			)
+		formatString: 0.0
+		lineageTag: 899c7bba-5254-4e08-9490-b16be8313e47
+
+	measure 'Net Revenue (Cr)' = DIVIDE ( SUM ( Invoices[NetAmount] ), 1e7 )
+		formatString: 0.0
+		lineageTag: c9aa3261-b1e8-4902-9984-fe41cabb25b3
+
+	measure '90+ Overdue (Lakh)' = [90+ Overdue (Cr)] * 100
+		formatString: 0
+		lineageTag: 1a1176d7-babe-45e4-accb-80f397b70e87
+
+	measure '90+ % of AR' = DIVIDE ( [90+ Overdue (Cr)], [Outstanding AR (Cr)] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c1161230-df68-44c5-86d0-c7c765af8cc6
+
+	measure 'Collection Efficiency' = DIVIDE ( [Collected (Cr)], [Billed (Cr)] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: f95eff5f-bcba-4821-816e-592122c41318
+
+	measure 'Closing AR (Cr)' =
+			
+			VAR LastDay = MAX ( 'Date'[Date] )
+			VAR BilledToDate =
+			    CALCULATE ( SUM ( Invoices[GrossAmount] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] <= LastDay )
+			VAR CollectedToDate =
+			    CALCULATE ( SUM ( Payments[AmountReceived] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] <= LastDay )
+			RETURN
+			    DIVIDE ( BilledToDate - CollectedToDate, 1e7 )
+		formatString: 0.0
+		lineageTag: 040146a3-b792-4e9d-b534-2a21c01f99b3
+
+	measure 'DSO (days)' =
+			
+			VAR LastDay = MAX ( 'Date'[Date] )
+			VAR FirstDay = EOMONTH ( LastDay, -3 ) + 1
+			VAR Billed3M =
+			    CALCULATE (
+			        SUM ( Invoices[GrossAmount] ),
+			        REMOVEFILTERS ( 'Date' ),
+			        DATESBETWEEN ( 'Date'[Date], FirstDay, LastDay )
+			    )
+			RETURN
+			    DIVIDE ( [Closing AR (Cr)] * 1e7, Billed3M ) * ( LastDay - FirstDay + 1 )
+		formatString: 0
+		lineageTag: 44a92195-62ab-420d-8ef2-42261054214a
+
+	measure 'Top 10 Share of 90+' =
+			
+			VAR Top10 =
+			    TOPN ( 10, ALL ( Clients[ClientName] ), [90+ Overdue (Cr)] )
+			RETURN
+			    DIVIDE (
+			        CALCULATE ( [90+ Overdue (Cr)], Top10 ),
+			        CALCULATE ( [90+ Overdue (Cr)], ALL ( Clients[ClientName] ) )
+			    )
+		formatString: 0%;-0%;0%
+		lineageTag: 91ae1e7d-684c-4d0c-b418-edc327a0023e
+
+	measure 'Open Invoices' = FORMAT ( CALCULATE ( COUNTROWS ( Invoices ), Invoices[AgeBucket] <> "Paid" ), "#,0" )
+		lineageTag: 1c59d3f2-4199-46f9-9a90-805fe843f153
+
+	measure 'Clean Payments' = FORMAT ( COUNTROWS ( Payments ), "#,0" )
+		lineageTag: 4a06d851-6c6f-4cf4-a8a7-f77e562ca971
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

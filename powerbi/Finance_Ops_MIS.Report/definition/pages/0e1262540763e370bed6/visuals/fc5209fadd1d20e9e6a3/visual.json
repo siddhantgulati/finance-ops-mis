@@ -1,0 +1,165 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "fc5209fadd1d20e9e6a3",
+  "position": {
+    "x": 1164,
+    "y": 72,
+    "z": 2,
+    "height": 1008,
+    "width": 756,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clients"
+                    }
+                  },
+                  "Property": "ClientName"
+                }
+              },
+              "queryRef": "Clients.ClientName",
+              "nativeQueryRef": "ClientName",
+              "displayName": "Client"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clients"
+                    }
+                  },
+                  "Property": "CreditRating"
+                }
+              },
+              "queryRef": "Clients.CreditRating",
+              "nativeQueryRef": "CreditRating",
+              "displayName": "Rating"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clients"
+                    }
+                  },
+                  "Property": "PaymentTermsDays"
+                }
+              },
+              "queryRef": "Clients.PaymentTermsDays",
+              "nativeQueryRef": "PaymentTermsDays",
+              "displayName": "Terms (days)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clients"
+                    }
+                  },
+                  "Property": "Industry"
+                }
+              },
+              "queryRef": "Clients.Industry",
+              "nativeQueryRef": "Industry"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Billed (Cr)"
+                }
+              },
+              "queryRef": "_Measures.Billed (Cr)",
+              "nativeQueryRef": "Billed (Cr)",
+              "displayName": "Billed (₹ Cr)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "90+ Overdue (Lakh)"
+                }
+              },
+              "queryRef": "_Measures.90+ Overdue (Lakh)",
+              "nativeQueryRef": "90+ Overdue (Lakh)",
+              "displayName": "90+ overdue (₹ Lakh)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "90+ Overdue (Lakh)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Client profile'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

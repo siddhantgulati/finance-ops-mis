@@ -1,0 +1,79 @@
+table Payments
+	lineageTag: b2eb852a-a773-4418-ba3f-d7317ad5e644
+
+	column PaymentID
+		dataType: string
+		lineageTag: e392d68d-ea43-4c2b-95aa-762bad64a694
+		summarizeBy: none
+		sourceColumn: PaymentID
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceID
+		dataType: string
+		lineageTag: eaec307c-bbb5-4405-8b4e-e8580d3d65ce
+		summarizeBy: none
+		sourceColumn: InvoiceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 227c4358-44d5-4083-8d96-40b7287de2ff
+		summarizeBy: none
+		sourceColumn: PaymentDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AmountReceived
+		dataType: double
+		lineageTag: 97839fde-1d33-4fe5-99d0-afec5470d672
+		summarizeBy: sum
+		sourceColumn: AmountReceived
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Mode
+		dataType: string
+		lineageTag: bafeb7e6-195e-44dd-9c68-850255fc5265
+		summarizeBy: none
+		sourceColumn: Mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientID
+		dataType: string
+		lineageTag: 7845497b-a034-4c47-b594-36208501d3c1
+		summarizeBy: none
+		sourceColumn: ClientID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServiceLine
+		dataType: string
+		lineageTag: 7c9f7acc-07a5-4054-ba6d-6ab8e694b9d6
+		summarizeBy: none
+		sourceColumn: ServiceLine
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Payments = m
+		mode: import
+		source =
+				let
+				    Source = Payments_Raw,
+				    #"Merged Queries" = Table.NestedJoin(Source, {"InvoiceID"}, Invoices_Raw, {"InvoiceID"}, "Invoices_Raw", JoinKind.Inner),
+				    #"Expanded Invoices_Raw" = Table.ExpandTableColumn(#"Merged Queries", "Invoices_Raw", {"ClientID", "ServiceLine"}, {"ClientID", "ServiceLine"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Expanded Invoices_Raw", {"InvoiceID", "PaymentDate", "AmountReceived"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

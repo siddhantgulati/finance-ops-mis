@@ -1,0 +1,15 @@
+{
+  "name": "Finance Ops MIS",
+  "dataColors": ["#1F2A4D", "#6BA4C9", "#C02F2F", "#8C8C8C", "#D9A441", "#4E7D5B", "#A6B4D0", "#E39C9C"],
+  "background": "#FFFFFF",
+  "foreground": "#262626",
+  "tableAccent": "#1F2A4D",
+  "good": "#4E7D5B",
+  "bad": "#C02F2F",
+  "neutral": "#D9A441",
+  "textClasses": {
+    "title": { "fontFace": "Segoe UI Semibold", "fontSize": 12, "color": "#1F2A4D" },
+    "callout": { "fontFace": "Segoe UI Semibold", "fontSize": 22, "color": "#1F2A4D" },
+    "label": { "fontFace": "Segoe UI", "fontSize": 10, "color": "#595959" }
+  }
+}

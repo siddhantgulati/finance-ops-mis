@@ -1,0 +1,60 @@
+table Excl_Duplicates
+	lineageTag: a82ef6a3-9b8e-41b9-b5cf-fd4a20598634
+
+	column InvoiceID
+		dataType: string
+		lineageTag: 7f05c3af-52cb-4554-8082-77e3c3dfe5ac
+		summarizeBy: none
+		sourceColumn: InvoiceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 44a61121-7f25-4462-a5f6-c280e05aea47
+		summarizeBy: none
+		sourceColumn: PaymentDate
+
+		variation Variation
+			isDefault
+			relationship: 26f2b61c-0966-4e2d-966a-06999d087534
+			defaultHierarchy: LocalDateTable_7c3fc533-fd6f-4c55-9120-7f5ad8be1687.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AmountReceived
+		dataType: double
+		lineageTag: b8365a2c-bbea-4079-b2b6-6e55f94ccfca
+		summarizeBy: sum
+		sourceColumn: AmountReceived
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Times
+		dataType: int64
+		formatString: 0
+		lineageTag: 31a4ae87-f3e5-4e77-899d-aecc5b209cdd
+		summarizeBy: sum
+		sourceColumn: Times
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Excl_Duplicates = m
+		mode: import
+		source =
+				let
+				    Source = Payments_Raw,
+				    #"Grouped Rows" = Table.Group(Source, {"InvoiceID", "PaymentDate", "AmountReceived"}, {{"Times", each Table.RowCount(_), Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Grouped Rows", each [Times] > 1)
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

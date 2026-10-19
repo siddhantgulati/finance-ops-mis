@@ -1,0 +1,164 @@
+table Invoices
+	lineageTag: 998aa38a-9188-4539-ae54-3182f4f9bafe
+
+	column InvoiceID
+		dataType: string
+		lineageTag: e6bd1546-da95-4adb-9880-bc3db841935f
+		summarizeBy: none
+		sourceColumn: InvoiceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5a2ae473-d09f-4796-850d-bd556c523147
+		summarizeBy: none
+		sourceColumn: InvoiceDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DueDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 79446fd4-742f-46e4-b033-42b7391bd95f
+		summarizeBy: none
+		sourceColumn: DueDate
+
+		variation Variation
+			isDefault
+			relationship: abba6312-9373-4a6b-b5ed-2b33b21cfb30
+			defaultHierarchy: LocalDateTable_cb1880f1-8cda-4fee-b0c4-a1da462b619e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ClientID
+		dataType: string
+		lineageTag: 4c8d5c49-1d41-40cd-b9a5-98c16517883d
+		summarizeBy: none
+		sourceColumn: ClientID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServiceLine
+		dataType: string
+		lineageTag: 5063af4f-3a7f-4ca3-b1e9-2977a9a570c5
+		summarizeBy: none
+		sourceColumn: ServiceLine
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetAmount
+		dataType: double
+		lineageTag: c592d682-111b-4f01-9e47-57aecfa61a65
+		summarizeBy: sum
+		sourceColumn: NetAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GST
+		dataType: double
+		lineageTag: 0f865009-ac42-4e87-9ad1-910c97a6fbc5
+		summarizeBy: sum
+		sourceColumn: GST
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GrossAmount
+		dataType: double
+		lineageTag: 46068081-a332-4b7d-9a9b-ee1cffdb1d49
+		summarizeBy: sum
+		sourceColumn: GrossAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Received
+		dataType: double
+		lineageTag: 15421cee-eeb8-4616-9b7d-bb3982920263
+		summarizeBy: sum
+		sourceColumn: Received
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Outstanding
+		dataType: double
+		lineageTag: 726cfda2-4fe7-43b8-a93a-b91db6f7cbb3
+		summarizeBy: sum
+		sourceColumn: Outstanding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DaysPastDue
+		dataType: int64
+		formatString: 0
+		lineageTag: b4612f0e-e611-4a13-9996-f386df7c62a1
+		summarizeBy: sum
+		sourceColumn: DaysPastDue
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeBucket
+		dataType: string
+		lineageTag: d76768a5-ad1d-44d2-a838-9e071c6bca12
+		summarizeBy: none
+		sourceColumn: AgeBucket
+		sortByColumn: BucketOrder
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column BucketOrder
+		dataType: int64
+		formatString: 0
+		lineageTag: a5009f2b-1214-4e38-ae08-e33baf583370
+		summarizeBy: sum
+		sourceColumn: BucketOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Invoices = m
+		mode: import
+		source =
+				let
+				    Source = Invoices_Raw,
+				    #"Merged Queries" = Table.NestedJoin(Source, {"InvoiceID"}, PaymentTotals, {"InvoiceID"}, "PaymentTotals", JoinKind.LeftOuter),
+				    #"Expanded PaymentTotals" = Table.ExpandTableColumn(#"Merged Queries", "PaymentTotals", {"Received"}, {"Received"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Expanded PaymentTotals",null,0,Replacer.ReplaceValue,{"Received"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value",{{"Received", type number}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Outstanding", each Number.Round(List.Max({0, [GrossAmount] - [Received]}), 2)),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "DaysPastDue", each if [Outstanding] < 1 then null else Duration.Days(#date(2026, 3, 31) - [DueDate])),
+				    #"Added Custom2" = Table.AddColumn(#"Added Custom1", "AgeBucket", each if [Outstanding] < 1 then "Paid"
+				else if [DaysPastDue] <= 0 then "Not due"
+				else if [DaysPastDue] <= 30 then "1-30"
+				else if [DaysPastDue] <= 60 then "31-60"
+				else if [DaysPastDue] <= 90 then "61-90"
+				else "90+"),
+				    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "BucketOrder", each if [AgeBucket] = "Not due" then 1
+				else if [AgeBucket] = "1-30" then 2
+				else if [AgeBucket] = "31-60" then 3
+				else if [AgeBucket] = "61-90" then 4
+				else if [AgeBucket] = "90+" then 5
+				else 6),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom3",{{"Outstanding", type number}, {"DaysPastDue", Int64.Type}, {"AgeBucket", type text}, {"BucketOrder", Int64.Type}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
